@@ -7,5 +7,6 @@ app.listen(3000, () => {
     console.log('Servidor rodando com sucesso na porta 3000')
 });
 
-// Executa o APP
-// node app.js
+// Comandos para executar o APP
+// node app.js Inicia o Node.js
+// npm start - Inicia o server

@@ -1,9 +1,10 @@
 {
-  "name": "aulas-senac",
+  "name": "Meu-app-express",
   "version": "1.0.0",
   "description": "",
   "main": "api.js",
   "scripts": {
+    "start": "node api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
