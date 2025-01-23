@@ -21,10 +21,10 @@ app.get('/:sigla', (req, res) => {
     );  // Busca o carro pela silga.
     if (!carro) {
         // Se o carro não for encontrado retorna o erro 404.
-        resposta.status(404).send("Não existe carro com a sigla informada!");
+        res.status(404).send("Não existe carro com a sigla informada!");
         return;
     }
-    resposta.status(200).send(carro);   // Se encontrado retorna o carro e status 200.
+    res.status(200).send(carro);   // Se encontrado retorna o carro e status 200.
 });
 
 // Define a porta do servidor
