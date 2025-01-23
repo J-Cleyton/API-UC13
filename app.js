@@ -33,6 +33,18 @@ app.listen(PORTA, () => {
     console.log(`Servidor rodando com sucesso na porta ${3000}`);
 });
 
+app.post('/', (req, res) => {
+    const novoCarro = req.body; // Obtém o novo carro emviado no corpo da requisição.
+    const { error } = modeloCarro.validate(novoCarro); // Válida os dados do novo Carro.
+    if (error) {
+        // Se houver erro de válidação, retorna o erro 400
+        res.status(400).send(error);
+        return;
+    }
+    carros2025.push(novoCarro); // Adiciona o carro a lista de carros.
+    res.status(200).send(novoCarro);    // Retorna o carro adicionado com status 200.
+
+});
 
 // Comandos para executar o app
 // node app.js Inicia o Node.js
