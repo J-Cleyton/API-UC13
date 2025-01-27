@@ -51,7 +51,7 @@ app.post('/', (req, res) => {
 app.put("/:sigla", (req, res) => {
     const siglaInformada = req.params.sigla.toUpperCase();
     const carroSelecionado = carros2025.find((c) => c.sigla === siglaInformada);
-    if (!carroSAelecionado) {
+    if (!carroSelecionado) {
         // Se o carro não for encontrado, retorna o erro 404
         res.status(404).send(" Não existe carro com a sigla informada");
         return;

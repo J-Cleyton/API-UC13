@@ -16,4 +16,4 @@ export const modeloAtualizacaoCarro = joi.object({
         velocidadeMaxima: joi.number().min(1),  // Potência minima é 1 Cv
         potencia: joi.number().min(1),  // Velocidade miníma de 1km/h
         consumo: joi.number().min(0.1), // Ano de fabricação
-})
+});
