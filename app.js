@@ -65,7 +65,7 @@ app.put("/:sigla", (req, res) => {
     }
     const campos = Object.keys(req.body);
     for (let campo of campos) {
-        carrosSelecionado[campo] = req.body[campo];
+        carroSelecionado[campo] = req.body[campo];
     }
     res.status(200).send(carroSelecionado);
 });
