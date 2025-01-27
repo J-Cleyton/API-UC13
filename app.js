@@ -11,10 +11,10 @@ const app = express();
 app.use(express.json());
 
 // Define uma rota get no caminho '/' que irá retornar a lista completa de carros.
-app.get('/', (requisicao, resposta) => {
-    // Quando a rota for acessada, a resposta terá o codigo de status 200 (ok) e enviara a lista de carros.
-    resposta.status(200).send(carros2025);  // Retorna lista de carros com status 200 (requisição bem-sucedida).
-});
+app.get('/', function (_requisicao, resposta) {
+        // Quando a rota for acessada, a resposta terá o codigo de status 200 (ok) e enviara a lista de carros.
+        resposta.status(200).send(carros2025); // Retorna lista de carros com status 200 (requisição bem-sucedida).
+    });
 
 app.get('/:sigla', (req, res) => {
     const siglaInformada = req.params.sigla.toUpperCase();  // Obtém a sigla e deixa Maíuscula
@@ -48,11 +48,18 @@ app.post('/', (req, res) => {
 
 });
 
-app.put("/:silgla", (req, res) => {
+app.put("/:sigla", (req, res) => {
     const siglaInformada = req.params.sigla.toUpperCase();
     const carroSelecionado = carros2025.find((c) => c.sigla === siglaInformada);
     if (!carroSAelecionado) {
-        // Se o carro não for encontrado, retorna o erro 400
+        // Se o carro não for encontrado, retorna o erro 404
+        res.status(404).send(" Não existe carro com a sigla informada");
+        return;
+    };
+    // Válida os dados da requisição com o modelo da atualização:
+    const { error } = modeloAtualizacaoCarro.validate(req.body);
+    if (error) {
+        // Se houver erro de válidação retorna o erro 400
         res.status(400).send(error);
         return;
     }
