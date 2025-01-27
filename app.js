@@ -48,6 +48,22 @@ app.post('/', (req, res) => {
 
 });
 
+app.put("/:silgla", (req, res) => {
+    const siglaInformada = req.params.sigla.toUpperCase();
+    const carroSelecionado = carros2025.find((c) => c.sigla === siglaInformada);
+    if (!carroSAelecionado) {
+        // Se o carro não for encontrado, retorna o erro 400
+        res.status(400).send(error);
+        return;
+    }
+    const campos = Object.keys(req.body);
+    for (let campo of campos) {
+        carrosSelecionado[campo] = req.body[campo];
+    }
+    res.status(200).send(carroSelecionado);
+});
 // Comandos para executar o app
 // node app.js Inicia o Node.js
 // npm start ou app.js ou ./app.js - Inicia o server
+// Iniciar server pelo nodemon
+// Npx nodemon app.js
