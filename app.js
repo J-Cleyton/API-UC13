@@ -1,8 +1,10 @@
 import carros2025 from "./tabelacarros.js"; //
-
-// Importa o módulo do Express.
+// Importa o módulo "Express" um framework para construção de aplicativos de web em node.js
 import express from 'express';
 
+import { modeloCarro } from "./validacao.js"
+
+// 
 const app = express();
 
 // Configura o express para entender requisições com o corpo em formato JSON.
