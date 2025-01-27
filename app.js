@@ -2,7 +2,7 @@ import carros2025 from "./tabelacarros.js"; //
 // Importa o módulo "Express" um framework para construção de aplicativos de web em node.js
 import express from 'express';
 
-import { modeloCarro } from "./validacao.js"
+import { modeloCarro, modeloAtualizacaoCarro } from "./validacao.js"
 
 // 
 const app = express();
@@ -66,4 +66,4 @@ app.put("/:silgla", (req, res) => {
 // node app.js Inicia o Node.js
 // npm start ou app.js ou ./app.js - Inicia o server
 // Iniciar server pelo nodemon
-// Npx nodemon app.js
+// Npx nodemon app.js npm nodemon
