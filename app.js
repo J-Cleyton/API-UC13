@@ -69,6 +69,22 @@ app.put("/:sigla", (req, res) => {
     }
     res.status(200).send(carroSelecionado);
 });
+
+app.delete('/:sigla', (req, res) => {
+    const siglaInformada = req.params.sigla.toUpperCase();  // Obtém a sigla do carro removido
+    const IndiceCarroSelecionado = carros2025.findIndex(
+        (C) => C.sigla === siglaInformada   // Busca o indice do narro na lista
+    );
+    if (IndiceCarroSelecionado ===-1) {
+        // Se o carro não for encontrado no (índice -1), retorna o erro 404
+        res.status(404).send("Não Existe um carro com a sigla informada!");
+        return;
+    }
+    const carroRemovido = carros2025.splice(IndiceCarroSelecionado, 1); // Remove o carro da lista
+    res.status(200).send(carroRemovido);    // Retorna o carro removido com status 200
+    });
+
+
 // Comandos para executar o app
 // node app.js Inicia o Node.js
 // npm start ou app.js ou ./app.js - Inicia o server

@@ -1,17 +1,17 @@
 const carros2025 = [
     {
-        nome: 'Ferrari',
-        sigla: 'FER',
-        velocidadeMaxima: '340',
-        potencia: 800,
-        consumo: 5.5,
+        "nome": "Ferrari",
+        "sigla": "FER",
+        "velocidadeMaxima": 340,
+        "potencia": 800,
+        "consumo": 5.5,
     },
    {
-        nome: 'Lambourghini',
-        sigla: 'LAM',
-        velocidadeMaxima: 355,
-        potencia: 770,
-        consumo: 6.2,
+        "nome": "Lambourghini",
+        "sigla": "LAM",
+        "velocidadeMaxima": 355,
+        "potencia": 770,
+        "consumo": 6.2,
    },
 ];
 
