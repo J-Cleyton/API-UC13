@@ -35,17 +35,32 @@ app.listen(PORTA, () => {
     console.log(`Servidor rodando com sucesso na porta ${3000}`);
 });
 
+//  app.post('/', (req, res) => {
+    //  const novoCarro = req.body; // Obtém o novo carro emviado no corpo da requisição.
+    //  const { error } = modeloCarro.validate(novoCarro); // Válida os dados do novo Carro.
+    //  if (error) {
+        //  Se houver erro de válidação, retorna o erro 400
+        //  res.status(400).send(error);
+        //  return;
+    //  }
+    //  carros2025.push(novoCarro); // Adiciona o carro a lista de carros.
+    //  res.status(200).send(novoCarro);    // Retorna o carro adicionado com status 200.
+
+//  });
+
 app.post('/', (req, res) => {
-    const novoCarro = req.body; // Obtém o novo carro emviado no corpo da requisição.
-    const { error } = modeloCarro.validate(novoCarro); // Válida os dados do novo Carro.
+    const novoCarro = req.body;
+    const carroExiste = carros2025.find(carro => carro.sigla === novoCarro.sigla);
+    if (carroExiste) {
+        return res.status(400).send(' Já existe um carro cadastrado com essa sigla');
+    }
+    const { error } = modeloCarro.validate(novoCarro);
     if (error) {
-        // Se houver erro de válidação, retorna o erro 400
         res.status(400).send(error);
         return;
     }
-    carros2025.push(novoCarro); // Adiciona o carro a lista de carros.
-    res.status(200).send(novoCarro);    // Retorna o carro adicionado com status 200.
-
+    carros2025.push(novoCarro);
+    res.status(201).send(novoCarro);
 });
 
 app.put("/:sigla", (req, res) => {
@@ -73,7 +88,7 @@ app.put("/:sigla", (req, res) => {
 app.delete('/:sigla', (req, res) => {
     const siglaInformada = req.params.sigla.toUpperCase();  // Obtém a sigla do carro removido
     const IndiceCarroSelecionado = carros2025.findIndex(
-        (C) => C.sigla === siglaInformada   // Busca o indice do narro na lista
+        (c) => c.sigla === siglaInformada   // Busca o indice do narro na lista
     );
     if (IndiceCarroSelecionado ===-1) {
         // Se o carro não for encontrado no (índice -1), retorna o erro 404
