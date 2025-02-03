@@ -24,7 +24,7 @@ export const getCarrobySigla = (sigla) => {
 };
 
 // Função que adiciona um novo carro ao array
-export const crateCarro = (novoCarro) => {
+export const createCarro = (novoCarro) => {
     carros2025.push(novoCarro); // Adicioina o novo carro ao final da lista
     return novoCarro;
 };
@@ -34,7 +34,7 @@ export const updateCarro = (sigla, dadosAtualizados) => {
     // Busca o índice do carro no array
     const carroIndex = carros2025.findIndex(carro => carro.sigla === sigla);
     if (carroIndex === -1) return null; // Se não encontrar o carro retorna Null
-    // Atualiza o carro com as infrmações fornecidas
+    // Atualiza o carro com as informações fornecidas
     carros2025[carroIndex] = { ...carros2025[carroIndex], ...dadosAtualizados };
     return carros2025[carroIndex]
 };
