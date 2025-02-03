@@ -5,9 +5,9 @@ import {
     createCarro,
     updateCarro,
     deleteCarro,
-} from "..controllers/carroController.js";
+} from "../controllers/carroController.js";
 
-const router = espress.router();
+const router = express.Router();
 
 // Rota para obter todos os carros
 router.get("/", getCarros);
